@@ -1,0 +1,2 @@
+include ':app', ':library-base', ':library-common', ':library-network', ':module-main', ':module-home', ':module-community', ':module-more', ':module-user', ':player', ':library-video'
+rootProject.name='LzMvvmComponent'

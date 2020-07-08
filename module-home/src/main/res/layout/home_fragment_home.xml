@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.lz.module.home.bridge.state.HomeViewModel" />
+
+        <variable
+            name="adapter"
+            type="androidx.viewpager.widget.PagerAdapter" />
+
+        <variable
+            name="click"
+            type="com.lz.module.home.ui.page.HomeFragment.ClickProxy" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/iv_candle"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="10dp"
+                android:src="@drawable/home_candle"
+                onClickWithDebouncing="@{()->click.candle()}"/>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:setupWithViewPager="@{pager}"
+                app:layout_constraintStart_toEndOf="@id/iv_candle"
+                app:layout_constraintEnd_toStartOf="@id/iv_search"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@android:color/darker_gray"
+                app:tabIndicatorHeight="3dp"
+                app:tabMode="scrollable"
+                app:tabIndicatorFullWidth="false"
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextColor="@android:color/darker_gray">
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="10dp"
+                android:src="@drawable/home_search"
+                onClickWithDebouncing="@{()->click.search()}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:setOffscreenPageLimit="@{2}"
+            app:adapter="@{adapter}"
+            app:setCurrentItem="@{vm.initPagePosition}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </LinearLayout>
+
+</layout>

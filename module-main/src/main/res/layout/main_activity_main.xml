@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.lz.module.main.bridge.state.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="androidx.viewpager.widget.PagerAdapter" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lz.module.main.views.CustomNoTouchViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:setOffscreenPageLimit="@{3}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <me.majiajie.pagerbottomtabstrip.PageNavigationView
+            android:id="@+id/bottom_view"
+            initMainPageNavigation="@{vm.initMainPageNavigation}"
+            adapter="@{adapter}"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="8dp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/white"
+            app:layout_behavior="com.lz.module.main.behavior.BottomNavigationBehavior"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

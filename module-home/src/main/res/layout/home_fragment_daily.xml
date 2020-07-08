@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.lz.module.home.bridge.state.DailyViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.lz.module.home.ui.page.adapter.DailyProviderAdapter" />
+
+        <variable
+            name="event"
+            type="com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            onRefreshLoadMoreListener="@{event}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                adapter="@{adapter}"
+                refreshList="@{vm.refreshList}"
+                page="@{vm.page}"/>
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

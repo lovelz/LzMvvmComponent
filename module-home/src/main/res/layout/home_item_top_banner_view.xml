@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.lz.module.home.data.bean.NominateInfo.ItemListBeanX.DataBeanXX.ItemListBean" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            tools:background="@drawable/common_tools_iv_bg"
+            android:scaleType="fitXY"
+            imageUrl="@{data.data.image}"
+            corners="@{5}"/>
+
+    </FrameLayout>
+</layout>
