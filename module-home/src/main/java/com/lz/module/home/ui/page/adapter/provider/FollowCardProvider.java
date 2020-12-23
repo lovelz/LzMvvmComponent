@@ -8,7 +8,6 @@ import com.lz.module.home.R;
 import com.lz.module.home.data.bean.NominateInfo;
 import com.lz.module.home.databinding.HomeItemFollowCardViewBinding;
 import com.lz.module.home.ui.page.adapter.type.NominateItemType;
-import com.lz.mvvm.common.contract.BaseCustomViewModule;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
